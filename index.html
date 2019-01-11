@@ -32,23 +32,26 @@
 <script>
     // этот код помечает картинки цифрами, для удобства разработки
     // его можно убрать, если не нужен
-    
+
     let prev = document.querySelector('.prev');
     let next = document.querySelector('.next');
     let list = document.querySelector('ul');
+    let icons = document.querySelectorAll('li');
+    let listItem = document.querySelector('li');
+    let elementWidth = listItem.getBoundingClientRect().width;
     let position = 0;
 
     prev.onclick = function() {
-        position = Math.min(position + 130, 0);
+        position = Math.min(position + elementWidth, 0);
         list.style.marginLeft = position + 'px';
-    }
+    };
     next.onclick = function() {
-        position = position - 130;
-        if (position < - 130* 8) position = - 130*8;
+        position = position - elementWidth;
+        if (position < - elementWidth * (icons.length - 3)) {
+            position =  - elementWidth * (icons.length - 3);
+        }
         list.style.marginLeft = position +'px';
     }
 
 </script>
 </body>
-
-</html>
