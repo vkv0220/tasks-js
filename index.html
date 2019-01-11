@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <head>
     <meta charset="utf-8">
@@ -9,7 +9,7 @@
 
 <!-- ваша верстка виджета, ваши стили -->
 
-<div id="carousel" class="carousel" ondblclick="return false" onmousedown="return false">
+<div id="carousel" class="carousel">
     <button class="arrow prev">⇦</button>
     <DIV CLASS="gallery">
         <ul>
@@ -32,7 +32,7 @@
 <script>
     // этот код помечает картинки цифрами, для удобства разработки
     // его можно убрать, если не нужен
-
+    'use strict';
     let prev = document.querySelector('.prev');
     let next = document.querySelector('.next');
     let list = document.querySelector('ul');
@@ -41,14 +41,17 @@
     let elementWidth = listItem.getBoundingClientRect().width;
     let position = 0;
     prev.classList.add('hidden');
-    //document.querySelector('carousel').addEventListener('click', () => event.preventDefault());
+
+    let div = document.querySelector('.carousel');
+    //div.addEventListener('dblclick',  () =>  event.preventDefault());
+    div.addEventListener('mousedown',  () =>  event.preventDefault());
 
     prev.addEventListener('click', () => {
 
         position = Math.min(position + elementWidth, 0);
         list.style.marginLeft = position + 'px';
 
-        if(position == 0) {
+        if(position === 0) {
            prev.classList.add('hidden');
         }
 
