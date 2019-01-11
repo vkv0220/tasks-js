@@ -12,10 +12,10 @@
     position: absolute;
     top: 60px;
     background: #ddd;
-    border-radius: 15px;
+    border-radius: 25px;
     border: 1px solid gray;
-    font-size: 24px;
-    line-height: 24px;
+    font-size: 20px;
+    line-height: 20px;
     color: #444;
     display: block;
 }
@@ -32,12 +32,24 @@
     cursor: pointer;
 }
 .prev {
-    left: 7px;
+    left: 6px;
 }
 
 .next {
-    right: 7px;
+    right: 6px;
 }
+
+.hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
 ul {
     height: 130px;
     width: 9999px;

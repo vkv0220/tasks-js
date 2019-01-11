@@ -9,7 +9,7 @@
 
 <!-- ваша верстка виджета, ваши стили -->
 
-<div id="carousel" class="carousel">
+<div id="carousel" class="carousel" ondblclick="return false" onmousedown="return false">
     <button class="arrow prev">⇦</button>
     <DIV CLASS="gallery">
         <ul>
@@ -36,22 +36,35 @@
     let prev = document.querySelector('.prev');
     let next = document.querySelector('.next');
     let list = document.querySelector('ul');
-    let icons = document.querySelectorAll('li');
-    let listItem = document.querySelector('li');
+    let icons = list.querySelectorAll('li');
+    let listItem = list.querySelector('li');
     let elementWidth = listItem.getBoundingClientRect().width;
     let position = 0;
+    prev.classList.add('hidden');
 
-    prev.onclick = function() {
+    prev.onclick = () => {
+
         position = Math.min(position + elementWidth, 0);
         list.style.marginLeft = position + 'px';
-    };
-    next.onclick = function() {
-        position = position - elementWidth;
-        if (position < - elementWidth * (icons.length - 3)) {
-            position =  - elementWidth * (icons.length - 3);
+
+        if(position == 0) {
+           prev.classList.add('hidden');
         }
-        list.style.marginLeft = position +'px';
-    }
+
+        next.classList.remove('hidden');
+    };
+
+    next.onclick = () => {
+
+        position = position - elementWidth;
+        if (position <= - elementWidth * (icons.length - 3)) {
+            next.classList.add('hidden');
+            position = -elementWidth * (icons.length - 3);
+        }
+
+        list.style.marginLeft = position + 'px';
+        prev.classList.remove('hidden');
+    };
 
 </script>
 </body>
